@@ -13,6 +13,7 @@ The map shows all the countries' political border. The colors shows the percenta
 
 ## The File structure
 Let us first see the file structure of the project. It is as shown below.
+
 ![files](file_structure.png)
 
 The main.py is the starter file where execution begins. The scripts folder has the main code for generating the chloropleth world map. The data folder has the immunization data in .XLS file and the remaining files are the bundle of SHAPE files that are used for rendering the coundaries of the world map. 
@@ -32,7 +33,7 @@ The steps assume that you have Python 3 and PIP installed on your environment. I
 
 Bokeh runs a web server and makes the dashboard available on the local PC on the URL (http://localhost:5006/bokeh-dashboard). **5006** is the default port on which Bokeh server runs. The command brings up the link and the browser displays the Bokeh interactive web application. 
 
-![Bokeh Chloropleth](Bokeh-Chloropleth-Dashboard.png)
+![Interactive Bokeh Chloropleth](interactive-chloropleth-immunization-data.gif)
 
 ## Further steps
 The dashboard can be extended to add more tabs so that multiple such interactive dashboards can be displayed in the same app.
