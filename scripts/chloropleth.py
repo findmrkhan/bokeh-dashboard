@@ -1,32 +1,16 @@
 
-import pandas as pd
-
 # Bokeh basics
-from bokeh.io import curdoc, save
+from bokeh.io import curdoc
 
-import geopandas as gpd
-from bokeh.models import (CategoricalColorMapper, HoverTool,
-						  ColumnDataSource, Panel,
-						  FuncTickFormatter, SingleIntervalTicker, LinearAxis)
-from bokeh.models.widgets import (CheckboxGroup, Slider, RangeSlider,
-								  Tabs, CheckboxButtonGroup,
-								  TableColumn, DataTable, Select)
 
 from bokeh.models import GeoJSONDataSource, LinearColorMapper, ColorBar
 from bokeh.palettes import brewer
-from bokeh.layouts import column, row, WidgetBox
 import json
 
 from bokeh.plotting import figure
-from bokeh.plotting import figure
-from bokeh.models import (CategoricalColorMapper, HoverTool,
-						  ColumnDataSource, Panel,
-						  FuncTickFormatter, SingleIntervalTicker, LinearAxis)
-from bokeh.models.widgets import (CheckboxGroup, Slider, RangeSlider,
-								  Tabs, CheckboxButtonGroup,
-								  TableColumn, DataTable, Select)
-from bokeh.layouts import column, row, WidgetBox
-
+from bokeh.models import ( HoverTool,Panel)
+from bokeh.models.widgets import (CheckboxGroup, Slider)
+from bokeh.layouts import row
 
 
 def chloropleth(geodata):
@@ -38,14 +22,11 @@ def chloropleth(geodata):
     title = 'Immunization % for the year 1980'
 
     def df2json(df):
-        print("in df2json")
         merged_json = json.loads(df.to_json())
-        #merged_json = json.loads(df)
         json_data = json.dumps(merged_json)
         return json_data
 
     def make_chloropleth(geosource):
-        print("in make_chloropleth : geosource = \n", geosource)
 
         palette = brewer['YlGnBu'][8]
         # Reverse color order so that dark blue is highest immunization.
@@ -72,15 +53,11 @@ def chloropleth(geodata):
 
     def make_dataset(active_vaccines, selected_year = initial_year):
         display_dataset = geodata[geodata['vaccine'].isin( active_vaccines )].copy()
-        print ('selected_year = ', selected_year)
         display_dataset['year'] = geodata[str(selected_year)].copy()
-        print('display_dataset = ', display_dataset['year'] )
-        #return ColumnDataSource(display_dataset)
         geosource = GeoJSONDataSource(geojson=df2json(display_dataset))
         return geosource
 
     def update(attr, old, new):
-        print('In update')
         if len (vaccine_selection.active) == 0:
             vaccine_selection.active = [7]
         else:
@@ -88,14 +65,9 @@ def chloropleth(geodata):
 
             new_src = make_dataset(vaccines_to_plot,
                                    selected_year=year_select.value)
-            #print('OLD SRC : \n ', src.head())
-            #src.update(new_src)
-            #print('NEW SRC : \n ', new_src)
-            #geosource = GeoJSONDataSource(geojson=df2json(new_src))
             p = make_chloropleth(new_src)
             p.title.text = f'Immunization % for the year {year_select.value}'
             layout = row(vaccine_selection, p, year_select)
-            #tab = Panel(child=layout, title='GeoData')
             curdoc().clear()
             curdoc().add_root(layout)
 
@@ -115,8 +87,6 @@ def chloropleth(geodata):
 
     p = make_chloropleth(src)
     layout = row(vaccine_selection, p, year_select)
-
-    tab = Panel(child= layout, title='GeoData')
 
     return layout
 
