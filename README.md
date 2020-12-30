@@ -49,3 +49,8 @@ The dashboard can be extended to add more tabs so that multiple such interactive
 Even drill down functionality can be implemented so that the country which is clicked can be shown with its state level details.
 Highlighting only a specific color range can also be achieved.
 
+
+
+
+If there are any questions, suggestions or comments, please let me know @findmrkhan@gmail.com
+
