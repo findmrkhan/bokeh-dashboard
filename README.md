@@ -1,7 +1,6 @@
 # Creating a World-map dashboard of immunization data using Bokeh
 In this post I will demonstrate how to create an interactive dashboard showing country-wise immunization data on a World-map in Python's Bokeh library. This countrywise map is also known as a Chloropleth diagram.
 
-![The Dashboard](Bokeh-Chloropleth-Dashboard.png)
 
 
 ## The dataset
