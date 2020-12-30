@@ -1,5 +1,5 @@
 # Creating a World-map dashboard of immunization data using Bokeh
-In this post I will demonstrate how to create an interactive dashboard showing country-wise immunization data on a World-map in Python's Bokeh library. This countrywise map is also known as a Chloropleth diagram.
+In this post I will demonstrate how to create an interactive dashboard showing country-wise immunization data on a World-map in Python's Bokeh library. This countrywise map is also known as a **Chloropleth map**.
 ![Bokeh Chloropleth](Bokeh-Chloropleth-Dashboard.png)
 
 
@@ -23,17 +23,26 @@ The steps assume that you have Python 3 and PIP installed on your environment. I
 
 1. Download this project on your PC as a zip file. Unzip the contents. The folder name will be **bokeh-dashboard**.
 2. Run the command to create a python virtual env
+
 `python -m venv .venv`
+
 3. Run the command to activate the python virtual environment
+
 `source .venv/bin/activate`
+
 4. Install all the dependencies 
+
 `pip install -r requirements.txt`
+
 2. Run the project using the command from the folder which contains the downloaded folder **bokeh-dashboard**.
+
 `bokeh serve --show bokeh-dashboard`
 
 Bokeh runs a web server and makes the dashboard available on the local PC on the URL (http://localhost:5006/bokeh-dashboard). **5006** is the default port on which Bokeh server runs. The command brings up the link and the browser displays the Bokeh interactive web application. 
 
+
 ![Interactive Bokeh Chloropleth](interactive-chloropleth-immunization-data.gif)
+
 
 ## Further steps
 The dashboard can be extended to add more tabs so that multiple such interactive dashboards can be displayed in the same app.
