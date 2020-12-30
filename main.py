@@ -25,9 +25,6 @@ vaccines = ['BCG','DTP1','DTP3','HEPB3','HEPBB','HIB3','IPV1','MCV1','MCV2','PCV
 
 
 def createDashboard():
-    print ("in createdashboard")
-
-    print (" vaccines =  : \n", vaccines)
 
     immun_df = pd.read_excel('bokeh-dashboard/data/immunization2019.xls', sheet_name = vaccines)
 
@@ -56,6 +53,5 @@ def createDashboard():
     # Put the tabs in the current document for display
     curdoc().add_root(tab1)
 
-#if __name__ == '__main__':
-#    print ("in Main")
+
 createDashboard()
